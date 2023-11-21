@@ -30,7 +30,7 @@
                      imageDownloader:(id<TWTRSEImageDownloader>)imageDownloader
                   localizedResources:(Class<TWTRSELocalizedResources>)localizedResources
                           networking:(id<TWTRSENetworking>)networking
-                         twitterText:(Class<TwitterTextProtocol>)twitterText
+                         twitterText:(id<TwitterTextProtocol>)twitterText
                  wordRangeCalculator:(Class<TWTRSEWordRangeCalculator>)wordRangeCalculator
                             delegate:(id<TWTRSETweetShareViewControllerDelegate>)delegate
 {

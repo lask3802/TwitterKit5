@@ -520,7 +520,8 @@ static NSString *const TWTRSessionStoreGuestUserName = @"com.twitter.sdk.ios.cor
     TWTRParameterAssertOrReturn(sessionID);
     TWTRParameterAssertOrReturn(service);
 
-    NSData *sessionData = [NSKeyedArchiver archivedDataWithRootObject:session];
+    NSError* err = nil;
+    NSData *sessionData = [NSKeyedArchiver archivedDataWithRootObject:session requiringSecureCoding:YES error:&err];
 
     TWTRGenericKeychainItem *item = [[TWTRGenericKeychainItem alloc] initWithService:service account:sessionID secret:sessionData];
     [self saveKeychainItem:item];
@@ -615,7 +616,9 @@ static NSString *const TWTRSessionStoreGuestUserName = @"com.twitter.sdk.ios.cor
     NSMutableArray *sessions = [NSMutableArray array];
 
     [sortedKeychainItems enumerateObjectsUsingBlock:^(TWTRGenericKeychainItem *item, NSUInteger idx, BOOL *stop) {
-        id<TWTRBaseSession> session = [NSKeyedUnarchiver unarchiveObjectWithData:item.secret];
+        NSError* err = nil;
+        NSSet* classSet = [NSSet setWithObjects:[TWTRSession class],[NSString class], nil];
+        id<TWTRBaseSession> session = [NSKeyedUnarchiver unarchivedObjectOfClasses:classSet fromData:item.secret error:&err];
 
         if (session && predicate(session)) {
             [sessions addObject:session];

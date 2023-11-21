@@ -3448,6 +3448,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB2241791C3DA603008A6DC7 /* TwitterKitTests.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				DEVELOPMENT_TEAM = "";
@@ -3468,6 +3469,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB2241791C3DA603008A6DC7 /* TwitterKitTests.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3498,8 +3500,13 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE_appletvos = NO;
+				ENABLE_BITCODE_iphoneos = NO;
+				ENABLE_BITCODE_watchos = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -3509,6 +3516,7 @@
 					"$(TARGET_BUILD_DIR)/Headers",
 					"$(BUILT_PRODUCTS_DIR)/Headers",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -3528,7 +3536,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE_appletvos = NO;
+				ENABLE_BITCODE_iphoneos = NO;
+				ENABLE_BITCODE_watchos = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -3538,6 +3551,7 @@
 					"$(TARGET_BUILD_DIR)/Headers",
 					"$(BUILT_PRODUCTS_DIR)/Headers",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
@@ -3546,11 +3560,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB2241761C3DA603008A6DC7 /* libTwitterKit.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				BITCODE_GENERATION_MODE = bitcode;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../vendor",
 					"$(PROJECT_DIR)",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3559,11 +3575,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB2241761C3DA603008A6DC7 /* libTwitterKit.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				BITCODE_GENERATION_MODE = bitcode;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../vendor",
 					"$(PROJECT_DIR)",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -3572,9 +3590,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37510DA81D3EC1080048227C /* TwitterKit.xcconfig */;
 			buildSettings = {
-				BITCODE_GENERATION_MODE = bitcode;
+				ARCHS = "$(ARCHS_STANDARD)";
+				BITCODE_GENERATION_MODE = NO;
 				CODE_SIGN_IDENTITY = "";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 5.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -3590,9 +3610,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37510DA81D3EC1080048227C /* TwitterKit.xcconfig */;
 			buildSettings = {
-				BITCODE_GENERATION_MODE = bitcode;
+				ARCHS = "$(ARCHS_STANDARD)";
+				BITCODE_GENERATION_MODE = NO;
 				CODE_SIGN_IDENTITY = "";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 5.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

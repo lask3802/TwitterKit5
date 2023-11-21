@@ -40,7 +40,8 @@
 
 - (void)saveAuthConfig:(TWTRAuthConfig *)authConfig
 {
-    NSData *secret = [NSKeyedArchiver archivedDataWithRootObject:authConfig];
+    NSError* err = nil;
+    NSData *secret = [NSKeyedArchiver archivedDataWithRootObject:authConfig requiringSecureCoding:YES error:&err];
     TWTRGenericKeychainItem *item = [[TWTRGenericKeychainItem alloc] initWithService:[self nameSpacedServiceKey] account:[self nameSpacedAccountKey] secret:secret];
     [self persistAuthConfig:authConfig withKeychainItem:item];
 }
@@ -57,7 +58,8 @@
 
     TWTRGenericKeychainItem *item = [items firstObject];
     if (item) {
-        return [NSKeyedUnarchiver unarchiveObjectWithData:item.secret];
+        NSSet* classes = [NSSet setWithObjects: [NSString class], nil];
+        return [NSKeyedUnarchiver unarchivedObjectOfClasses:classes fromData:item.secret error:&error ];
     } else {
         return nil;
     }
