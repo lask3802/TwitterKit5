@@ -27,7 +27,16 @@ cp -r TwitterKit/iphoneos/TwitterKit.framework/ iOS/TwitterKit.framework
 #lipo -create -output iOS/TwitterKit.framework/TwitterKit TwitterKit/iphoneos/TwitterKit.framework/TwitterKit TwitterKit/iphonesimulator/TwitterKit.framework/TwitterKit
 lipo -archs iOS/TwitterKit.framework/TwitterKit
 
+cp -r TwitterCore/iphoneos/ TwitterCore/iOS
+
+
 ## Zip them into TwitterKit.zip
+touch TwitterKit.zip
 rm TwitterKit.zip
 zip -r TwitterKit.zip iOS/*
 rm -rf iOS
+
+touch TwitterCore.zip
+rm TwitterCore.zip
+zip -r TwitterCore.zip TwitterCore/iOS/*
+rm -rf TwitterCore/iOS
