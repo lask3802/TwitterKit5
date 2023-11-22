@@ -20,6 +20,18 @@ xcodebuild \
     CONFIGURATION_BUILD_DIR=./iphoneos \
     clean build
 
+
+
+rm -rf iOS
+mkdir -p iOS
+cp -r TwitterCore/iphoneos/TwitterCore.framework iOS/TwitterCore.framework
+lipo -archs iOS/TwitterCore.framework/TwitterCore
+
+touch TwitterCore.zip
+rm TwitterCore.zip
+zip -r TwitterCore.zip iOS/*
+rm -rf iOS
+
 ## Build TwitterKit.framework - armv7, arm64
 xcodebuild \
     -project TwitterKit/TwitterKit.xcodeproj \
@@ -31,10 +43,10 @@ xcodebuild \
 
 ## Merge into one TwitterKit.framework with x86_64, armv7, arm64
 rm -rf iOS
-mkdir -p deploy/iOS
-cp -r TwitterKit/iphoneos/TwitterKit.framework/ deploy/iOS/TwitterKit.framework
+mkdir -p iOS
+cp -r TwitterKit/iphoneos/TwitterKit.framework/ iOS/TwitterKit.framework
 #lipo -create -output iOS/TwitterKit.framework/TwitterKit TwitterKit/iphoneos/TwitterKit.framework/TwitterKit TwitterKit/iphonesimulator/TwitterKit.framework/TwitterKit
-lipo -archs deploy/iOS/TwitterKit.framework/TwitterKit
+lipo -archs iOS/TwitterKit.framework/TwitterKit
 
 
 
@@ -42,11 +54,7 @@ lipo -archs deploy/iOS/TwitterKit.framework/TwitterKit
 ## Zip them into TwitterKit.zip
 touch TwitterKit.zip
 rm TwitterKit.zip
-zip -r TwitterKit.zip deploy/iOS/*
-rm -rf deploy/iOS/TwitterKit
-
-cp -r TwitterCore/iphoneos/ deploy/iOS/TwitterCore.framework
-touch TwitterCore.zip
-rm TwitterCore.zip
-zip -r TwitterCore.zip deploy/iOS/*
-rm -rf deploy
+zip -r TwitterKit.zip iOS/*
+rm -rf iOS
+rm -rf TwitterKit/iphoneos
+rm -rf TwitterCore/iphoneos
