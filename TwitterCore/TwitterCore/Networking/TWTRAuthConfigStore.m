@@ -41,7 +41,7 @@
 - (void)saveAuthConfig:(TWTRAuthConfig *)authConfig
 {
     NSError* err = nil;
-    NSData *secret = [NSKeyedArchiver archivedDataWithRootObject:authConfig requiringSecureCoding:YES error:&err];
+    NSData *secret = [NSKeyedArchiver archivedDataWithRootObject:authConfig requiringSecureCoding:NO error:&err];
     TWTRGenericKeychainItem *item = [[TWTRGenericKeychainItem alloc] initWithService:[self nameSpacedServiceKey] account:[self nameSpacedAccountKey] secret:secret];
     [self persistAuthConfig:authConfig withKeychainItem:item];
 }

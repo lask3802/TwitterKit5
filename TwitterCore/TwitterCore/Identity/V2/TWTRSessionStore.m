@@ -521,7 +521,7 @@ static NSString *const TWTRSessionStoreGuestUserName = @"com.twitter.sdk.ios.cor
     TWTRParameterAssertOrReturn(service);
 
     NSError* err = nil;
-    NSData *sessionData = [NSKeyedArchiver archivedDataWithRootObject:session requiringSecureCoding:YES error:&err];
+    NSData *sessionData = [NSKeyedArchiver archivedDataWithRootObject:session requiringSecureCoding:NO error:&err];
 
     TWTRGenericKeychainItem *item = [[TWTRGenericKeychainItem alloc] initWithService:service account:sessionID secret:sessionData];
     [self saveKeychainItem:item];
